@@ -3,6 +3,7 @@
   "model": "gpt-3.5-turbo",
   "proxy": "",
   "channel_type": "wechatmp",
+  "wechatmp_token": "MtBYqv6xo",
   "wechatmp_port": 80,
   "single_chat_prefix": [""],
   "single_chat_reply_prefix": "",

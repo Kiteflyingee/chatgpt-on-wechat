@@ -19,7 +19,9 @@ WORKDIR ${BUILD_PREFIX}
 
 ADD docker/entrypoint.sh /entrypoint.sh
 
-RUN iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080 \
+
+RUN apk add iptables \
+    && iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080 \
     && iptables-save > /etc/iptables/rules.v4
 
 RUN chmod +x /entrypoint.sh \

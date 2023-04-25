@@ -37,15 +37,7 @@ if [ "$CHATGPT_ON_WECHAT_EXEC" == "" ] ; then
     CHATGPT_ON_WECHAT_EXEC="clash -d /root/.config/clash & python app.py"
 fi
 
-# modify content in config.json
-if [ "$OPEN_AI_API_KEY" == "YOUR API KEY" ] || [ "$OPEN_AI_API_KEY" == "" ]; then
-    echo -e "\033[31m[Warning] You need to set OPEN_AI_API_KEY before running!\033[0m"
-fi
-
-
 # go to prefix dir
 cd $CHATGPT_ON_WECHAT_PREFIX
 # excute
 $CHATGPT_ON_WECHAT_EXEC
-
-

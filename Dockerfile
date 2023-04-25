@@ -20,9 +20,9 @@ WORKDIR ${BUILD_PREFIX}
 ADD docker/entrypoint.sh /entrypoint.sh
 
 RUN chmod +x /entrypoint.sh \
-    && adduser -D -h /home/noroot -u 1000 -s /bin/bash noroot \
-    && chown -R noroot:noroot ${BUILD_PREFIX}
-
-USER noroot
+#    && adduser -D -h /home/noroot -u 1000 -s /bin/bash noroot \
+#    && chown -R noroot:noroot ${BUILD_PREFIX}
+#
+#USER noroot
 
 ENTRYPOINT ["docker/entrypoint.sh"]

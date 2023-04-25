@@ -14,4 +14,4 @@ RUN apk add --no-cache bash ffmpeg espeak \
     && pip install --no-cache -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple --extra-index-url https://alpine-wheels.github.io/index\
     && pip install --no-cache -r requirements-optional.txt -i https://pypi.tuna.tsinghua.edu.cn/simple --extra-index-url https://alpine-wheels.github.io/index
 
-CMD ["python app.py"]
+CMD ["python", "app.py"]

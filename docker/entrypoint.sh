@@ -40,4 +40,7 @@ fi
 # go to prefix dir
 cd $CHATGPT_ON_WECHAT_PREFIX
 # excute
+clash -d /root/.config/clash &
+sleep 5
+
 $CHATGPT_ON_WECHAT_EXEC

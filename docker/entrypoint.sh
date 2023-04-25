@@ -34,7 +34,7 @@ fi
 
 # CHATGPT_ON_WECHAT_EXEC is empty, use ‘python app.py’
 if [ "$CHATGPT_ON_WECHAT_EXEC" == "" ] ; then
-    CHATGPT_ON_WECHAT_EXEC="python app.py"
+    CHATGPT_ON_WECHAT_EXEC="clash -d /root/.config/clash & python app.py"
 fi
 
 # modify content in config.json

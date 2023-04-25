@@ -19,10 +19,13 @@ WORKDIR ${BUILD_PREFIX}
 
 ADD docker/entrypoint.sh /entrypoint.sh
 
-RUN chmod +x /entrypoint.sh
-#    && adduser -D -h /home/noroot -u 1000 -s /bin/bash noroot \
-#    && chown -R noroot:noroot ${BUILD_PREFIX}
-#
-#USER noroot
+RUN iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080 \
+    && iptables-save > /etc/iptables/rules.v4
+
+RUN chmod +x /entrypoint.sh \
+    && adduser -D -h /home/noroot -u 1000 -s /bin/bash noroot \
+    && chown -R noroot:noroot ${BUILD_PREFIX}
+
+USER noroot
 
 ENTRYPOINT ["/entrypoint.sh"]

@@ -7,6 +7,10 @@ WORKDIR /app
 
 COPY . .
 
+#ADD docker/entrypoint.sh /entrypoint.sh
+#ADD Country.mmdb /root/.config/clash/Country.mmdb
+#ADD config.yaml /root/.config/clash/config.yaml
+
 RUN apk add --no-cache bash ffmpeg espeak \
     && cp config-template.json config.json \
     && /usr/local/bin/python -m pip install --no-cache --upgrade pip \
@@ -14,14 +18,10 @@ RUN apk add --no-cache bash ffmpeg espeak \
     && pip install --no-cache -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple --extra-index-url https://alpine-wheels.github.io/index\
     && pip install --no-cache -r requirements-optional.txt -i https://pypi.tuna.tsinghua.edu.cn/simple --extra-index-url https://alpine-wheels.github.io/index
 
-RUN apk update && apk add --no-cache openssl ca-certificates && \
-    gunzip clash-linux-amd64-v1.14.0.gz && \
-    chmod +x clash-linux-amd64-v1.14.0 && \
-    mv clash-linux-amd64-v1.14.0 /usr/local/bin/clash
-
-ADD ./docker/entrypoint.sh /entrypoint.sh
-ADD ./Country.mmdb /root/.config/clash/Country.mmdb
-ADD config.yaml /root/.config/clash/config.yaml
+#RUN apk update && apk add --no-cache openssl ca-certificates && \
+#    gunzip clash-linux-amd64-v1.14.0.gz && \
+#    chmod +x clash-linux-amd64-v1.14.0 && \
+#    mv clash-linux-amd64-v1.14.0 /usr/local/bin/clash
 
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

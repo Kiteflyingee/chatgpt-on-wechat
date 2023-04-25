@@ -11,8 +11,8 @@ RUN apk add --no-cache bash ffmpeg espeak \
     && cd ${BUILD_PREFIX} \
     && cp config-template.json config.json \
     && /usr/local/bin/python -m pip install --no-cache --upgrade pip \
-    && pip install --no-cache -r requirements.txt --extra-index-url https://alpine-wheels.github.io/index\
-    && pip install --no-cache -r requirements-optional.txt --extra-index-url https://alpine-wheels.github.io/index
+    && pip install --no-cache -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple --extra-index-url https://alpine-wheels.github.io/index\
+    && pip install --no-cache -r requirements-optional.txt -i https://pypi.tuna.tsinghua.edu.cn/simple --extra-index-url https://alpine-wheels.github.io/index
 
 WORKDIR ${BUILD_PREFIX}
 

@@ -23,5 +23,5 @@ RUN apk add --no-cache bash ffmpeg espeak \
 #    chmod +x clash-linux-amd64-v1.14.0 && \
 #    mv clash-linux-amd64-v1.14.0 /usr/local/bin/clash
 
-RUN chmod +x /entrypoint.sh
+RUN chmod +x docker/entrypoint.sh
 ENTRYPOINT ["docker/entrypoint.sh"]
